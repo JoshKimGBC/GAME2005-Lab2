@@ -19,12 +19,30 @@ PlayScene::~PlayScene()
 void PlayScene::draw()
 {
 	drawDisplayList();
-	SDL_SetRenderDrawColor(Renderer::Instance().getRenderer(), 255, 255, 255, 255);
+	/*
+	// Velocity x and y
+	float vX = 100;
+	float vY = 200;
+
+	glm::vec2 initialVelocity = glm::vec2(vX, vY);
+
+	// Starting x and y
+	float startX = 200;
+	float startY = 400;
+
+	SDL_SetRenderDrawColor(Renderer::Instance().getRenderer(), 100, 0, 0, 255);
+	SDL_RenderDrawLine(Renderer::Instance().getRenderer(), startX, startY, startX + initialVelocity.x, startY + initialVelocity.y);
+	
+	SDL_SetRenderDrawColor(Renderer::Instance().getRenderer(), 255, 255, 255, 255); */
 }
 
 void PlayScene::update()
 {
 	updateDisplayList();
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_SPACE))
+	{
+
+	}
 }
 
 void PlayScene::clean()
@@ -114,15 +132,11 @@ void PlayScene::start()
 {
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
-	
-	// Plane Sprite
-	m_pPlaneSprite = new Plane();
-	addChild(m_pPlaneSprite);
 
-	// Player Sprite
-	m_pPlayer = new Player();
-	addChild(m_pPlayer);
-	m_playerFacingRight = true;
+	// Jacked Pikachu sprite
+	m_pProjectile = new Projectile();
+	addChild(m_pProjectile);
+	m_pProjectile->getTransform()->position = glm::vec2(300.f, 100.f);
 
 	// Back Button
 	m_pBackButton = new Button("../Assets/textures/backButton.png", "backButton", BACK_BUTTON);

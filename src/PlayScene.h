@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Button.h"
 #include "Label.h"
+#include "Projectile.h"
 
 class PlayScene : public Scene
 {
@@ -29,8 +30,10 @@ private:
 
 	Plane* m_pPlaneSprite;
 	Player* m_pPlayer;
-	bool m_playerFacingRight;
+	Projectile* m_pProjectile;
 
+	bool m_playerFacingRight;
+	
 	// UI Items
 	Button* m_pBackButton;
 	Button* m_pNextButton;
